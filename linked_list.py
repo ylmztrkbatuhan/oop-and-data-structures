@@ -24,3 +24,33 @@ class LinkedList:
 
             new_node.next = runner
             previous.next = new_node
+
+    def print_list_items(self):
+        if self.head is None:
+            print("Empty")
+        else:
+            runner = self.head
+            while runner is not None:
+                print(runner.value, end=" ")
+                runner = runner.next
+            print()
+
+    def count_nodes(self):
+        return self.count_nodes_recursive(self.head)
+
+    def count_nodes_recursive(self, node):
+        if node is None:
+            return 0
+        else:
+            return 1 + self.count_nodes_recursive(node.next)
+
+    def find_node(self, target_value):
+        runner = self.head
+
+        while runner is not None:
+            if runner.value == target_value:
+                return True
+            else:
+                runner = runner.next
+
+        return False
