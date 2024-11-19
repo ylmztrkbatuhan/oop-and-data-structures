@@ -54,3 +54,25 @@ class LinkedList:
                 runner = runner.next
 
         return False
+
+    def delete_node(self, target_value):
+        if self.head is None:
+            return False
+        elif self.head.value == target_value:
+            self.head = self.head.next
+            return True
+        else:
+            previous = self.head
+            runner = self.head.next
+
+            while(runner is not None) and (target_value > runner.value):
+                previous = runner
+                runner = runner.next
+
+            if (runner is not None) and (runner.value == target_value):
+                #previous will now point tı-o the node
+                #that comes after the runner node
+                previous.next = runner.next #Bridge
+                return  True
+            else:
+                return False
